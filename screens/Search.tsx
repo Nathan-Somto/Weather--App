@@ -23,6 +23,7 @@ import getDailyData, { dailyDataType } from "../utils/getDailyData";
 import Carousel from "../components/Carousel";
 import DailyData from "../components/DailyData";
 import CarouselContainer from "../components/Carousel";
+import { apiKey } from "../utils/apiKey";
 
 export default function Search() {
   const [loader, setLoader] = useState(true);
@@ -44,7 +45,7 @@ export default function Search() {
       cityName.charAt(0).toUpperCase() + cityName.slice(1).toLowerCase();
     try {
       const response = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=96447256278a1b49ec534dc90c7971ba`
+        `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`
       );
       const data = await response.json();
       setCityData((_prevState: any) => [...data]);

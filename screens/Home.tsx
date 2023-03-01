@@ -19,6 +19,7 @@ import IextraData from "../interfaces/extraData";
 import getExtraData from "../utils/getExtraData";
 import getTempAndDate from "../utils/getTempAndDate";
 import Error from "./Error";
+import { apiKey } from "../utils/apiKey";
 type tempChart ={tempData:number[],dateData:string[]}
 export default function Home(): JSX.Element {
   const [loader, setLoader] = useState<boolean>(true);
@@ -74,7 +75,7 @@ export default function Home(): JSX.Element {
             (currentLocation as expoLocation.LocationObject).coords.latitude
           }&lon=${
             (currentLocation as expoLocation.LocationObject).coords.longitude
-          }&units=metric&appid=96447256278a1b49ec534dc90c7971ba`
+          }&units=metric&appid=${apiKey}`
         );
         const weatherData = await response.json();
         let arr: any[] = [];
